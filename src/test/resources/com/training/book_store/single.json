@@ -1,0 +1,10 @@
+{
+  "id": 1,
+  "title": "book",
+  "author": "author",
+  "isbn": "isbn1",
+  "genre": "genre1",
+  "publisher": "publisher",
+  "amount": 100,
+  "price": 100.0
+}
