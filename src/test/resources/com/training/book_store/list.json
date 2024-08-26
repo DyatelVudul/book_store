@@ -1,0 +1,5 @@
+[
+  {"id": 1, "title": "book", "author": "author", "isbn": "isbn1", "genre": "genre1", "publisher": "publisher", "amount": 100, "price": 100.0},
+  {"id": 2, "title": "book1", "author": "author1", "isbn": "isbn5", "genre": "genre0", "publisher": "publisher", "amount": 1023, "price": 10.0},
+  {"id": 3, "title": "book3", "author": "author", "isbn": "isbn10", "genre": "genre2", "publisher": "publisher1", "amount": 1, "price": 200.0}
+]
