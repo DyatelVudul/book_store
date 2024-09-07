@@ -22,7 +22,9 @@ class BookStoreApplicationTests {
 
 	@Test
 	void returnBookById() {
-		ResponseEntity<String> response = restTemplate.getForEntity("/book-store/search/id/99", String.class);
+		ResponseEntity<String> response = restTemplate.
+				withBasicAuth("admin", "abc123").
+				getForEntity("/book-store/library/search/id/99", String.class);
 
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 
@@ -65,7 +67,9 @@ class BookStoreApplicationTests {
 
 	@Test
 	public void invalidId() {
-		ResponseEntity<String> response = restTemplate.getForEntity("/book-store/search/id/-1", String.class);
+		ResponseEntity<String> response = restTemplate.
+				withBasicAuth("user", "cba123")
+				.getForEntity("/book-store/library/search/id/-1", String.class);
 
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
 		assertThat(response.getBody()).isNull();
@@ -73,7 +77,9 @@ class BookStoreApplicationTests {
 
 	@Test
 	void returnBookByIsbn() {
-		ResponseEntity<String> response = restTemplate.getForEntity("/book-store/search/isbn/isbn1", String.class);
+		ResponseEntity<String> response = restTemplate.
+				withBasicAuth("user", "cba123")
+				.getForEntity("/book-store/library/search/isbn/isbn1", String.class);
 
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 
@@ -116,7 +122,9 @@ class BookStoreApplicationTests {
 
 	@Test
 	public void invalidIsbn() {
-		ResponseEntity<String> response = restTemplate.getForEntity("/book-store/search/isbn/isbn", String.class);
+		ResponseEntity<String> response = restTemplate.
+				withBasicAuth("user", "cba123")
+				.getForEntity("/book-store/library/search/isbn/isbn", String.class);
 
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
 		assertThat(response.getBody()).isNull();
@@ -124,7 +132,9 @@ class BookStoreApplicationTests {
 
 	@Test
 	void returnAllBooks() {
-		ResponseEntity<String> response = restTemplate.getForEntity("/book-store/search", String.class);
+		ResponseEntity<String> response = restTemplate.
+				withBasicAuth("user", "cba123")
+				.getForEntity("/book-store/library/search", String.class);
 
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 
@@ -171,7 +181,9 @@ class BookStoreApplicationTests {
 
 	@Test
 	void returnBooksByTitle() {
-		ResponseEntity<String> response = restTemplate.getForEntity("/book-store/search/title/book", String.class);
+		ResponseEntity<String> response = restTemplate.
+				withBasicAuth("user", "cba123")
+				.getForEntity("/book-store/library/search/title/book", String.class);
 
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 
@@ -218,7 +230,9 @@ class BookStoreApplicationTests {
 
 	@Test
 	void returnBooksByAuthor() {
-		ResponseEntity<String> response = restTemplate.getForEntity("/book-store/search/author/author", String.class);
+		ResponseEntity<String> response = restTemplate.
+				withBasicAuth("user", "cba123")
+				.getForEntity("/book-store/library/search/author/author", String.class);
 
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 
@@ -265,7 +279,9 @@ class BookStoreApplicationTests {
 
 	@Test
 	void returnBooksByGenre() {
-		ResponseEntity<String> response = restTemplate.getForEntity("/book-store/search/genre/genre2", String.class);
+		ResponseEntity<String> response = restTemplate.
+				withBasicAuth("user", "cba123")
+				.getForEntity("/book-store/library/search/genre/genre2", String.class);
 
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 
@@ -312,7 +328,9 @@ class BookStoreApplicationTests {
 
 	@Test
 	void returnBooksByPublisher() {
-		ResponseEntity<String> response = restTemplate.getForEntity("/book-store/search/publisher/publisher", String.class);
+		ResponseEntity<String> response = restTemplate.
+				withBasicAuth("user", "cba123")
+				.getForEntity("/book-store/library/search/publisher/publisher", String.class);
 
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 

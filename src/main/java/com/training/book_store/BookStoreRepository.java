@@ -5,15 +5,13 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/book-store")
+@RequestMapping("/book-store/library")
 public class BookStoreRepository {
 
     private final BookStoreController bookStoreController;
@@ -100,4 +98,24 @@ public class BookStoreRepository {
         );
         return ResponseEntity.ok(books.getContent());
     }
+
+    @PostMapping("maintain/add")
+    public ResponseEntity<Book> createBook(@RequestBody Book book, Principal principal) {
+        if(principal == null) {
+            return ResponseEntity.badRequest().build();
+        }
+        return ResponseEntity.ok(bookStoreController.save(book));
+    }
+
+    @DeleteMapping("maintain/remove")
+    public ResponseEntity<Book> deleteBook(@RequestBody Book book, Principal principal) {
+        return ResponseEntity.ofNullable(null);
+    }
+
+    @PutMapping("maintain/update")
+    public ResponseEntity<Book> updateBook(@RequestBody Book book, Principal principal) {
+        return ResponseEntity.ok(bookStoreController.save(book));
+    }
+
+
 }
